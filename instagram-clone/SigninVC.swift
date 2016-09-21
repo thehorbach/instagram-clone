@@ -12,10 +12,31 @@ import FBSDKCoreKit
 import FBSDKLoginKit
 
 class SigninVC: UIViewController {
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @IBAction func emailButtonDidTouch (_ sender: AnyObject) {
+        if let email = emailTextField.text, let password = passwordTextField.text {
+            FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, err) in
+                if err == nil {
+                    print("✅ SLAVIK: success with Firebase auth")
+                } else {
+                    FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, err) in
+                        if err != nil {
+                            print("🚨 SLAVIK: \(err.debugDescription)")
+                        } else {
+                            print("✅ SLAVIK: success with Facebook auth")
+                        }
+                    })
+                }
+            })
+        }
     }
 
     @IBAction func facebookButtonDidTouch (_ sender: AnyObject) {
