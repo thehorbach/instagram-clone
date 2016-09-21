@@ -7,4 +7,6 @@ target 'instagram-clone' do
 	pod 'Firebase/Core'
 	pod 'Firebase/Auth'
 	pod 'Firebase/Storage'
+	pod 'FBSDKCoreKit'
+	pod 'FBSDKLoginKit'
 end
