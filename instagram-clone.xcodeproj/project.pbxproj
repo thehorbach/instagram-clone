@@ -13,6 +13,11 @@
 		11BC6C301D92CA40009533DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11BC6C2F1D92CA40009533DA /* Assets.xcassets */; };
 		11BC6C331D92CA40009533DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11BC6C311D92CA40009533DA /* LaunchScreen.storyboard */; };
 		11BC6C3B1D92CB2F009533DA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11BC6C3A1D92CB2F009533DA /* GoogleService-Info.plist */; };
+		11BC6C411D92E9DC009533DA /* FancyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C401D92E9DC009533DA /* FancyView.swift */; };
+		11BC6C441D92EA50009533DA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C431D92EA50009533DA /* Constants.swift */; };
+		11BC6C461D92EC88009533DA /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C451D92EC88009533DA /* RoundButton.swift */; };
+		11BC6C481D92EEC2009533DA /* FancyField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C471D92EEC2009533DA /* FancyField.swift */; };
+		11BC6C4A1D92EFFE009533DA /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C491D92EFFE009533DA /* FancyButton.swift */; };
 		D8168A6F575284DC68DA4423 /* Pods_instagram_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72CA51373708842DFA6BF8A /* Pods_instagram_clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +31,11 @@
 		11BC6C321D92CA40009533DA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11BC6C341D92CA40009533DA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11BC6C3A1D92CB2F009533DA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		11BC6C401D92E9DC009533DA /* FancyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyView.swift; sourceTree = "<group>"; };
+		11BC6C431D92EA50009533DA /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		11BC6C451D92EC88009533DA /* RoundButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		11BC6C471D92EEC2009533DA /* FancyField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyField.swift; sourceTree = "<group>"; };
+		11BC6C491D92EFFE009533DA /* FancyButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		5EF55031644064D58669EEBC /* Pods-instagram-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram-clone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagram-clone/Pods-instagram-clone.debug.xcconfig"; sourceTree = "<group>"; };
 		C72CA51373708842DFA6BF8A /* Pods_instagram_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagram_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,6 +73,7 @@
 		11BC6C271D92CA40009533DA /* instagram-clone */ = {
 			isa = PBXGroup;
 			children = (
+				11BC6C421D92EA44009533DA /* Util */,
 				11BC6C3E1D92CDED009533DA /* Controller */,
 				11BC6C3D1D92CDE6009533DA /* View */,
 				11BC6C3C1D92CDE2009533DA /* Model */,
@@ -83,6 +94,10 @@
 		11BC6C3D1D92CDE6009533DA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				11BC6C401D92E9DC009533DA /* FancyView.swift */,
+				11BC6C451D92EC88009533DA /* RoundButton.swift */,
+				11BC6C471D92EEC2009533DA /* FancyField.swift */,
+				11BC6C491D92EFFE009533DA /* FancyButton.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -104,6 +119,14 @@
 				11BC6C3A1D92CB2F009533DA /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		11BC6C421D92EA44009533DA /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				11BC6C431D92EA50009533DA /* Constants.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		83D9EA7CFF746F5729D67698 /* Frameworks */ = {
@@ -248,8 +271,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11BC6C481D92EEC2009533DA /* FancyField.swift in Sources */,
 				11BC6C2B1D92CA40009533DA /* SigninVC.swift in Sources */,
+				11BC6C461D92EC88009533DA /* RoundButton.swift in Sources */,
+				11BC6C4A1D92EFFE009533DA /* FancyButton.swift in Sources */,
 				11BC6C291D92CA40009533DA /* AppDelegate.swift in Sources */,
+				11BC6C411D92E9DC009533DA /* FancyView.swift in Sources */,
+				11BC6C441D92EA50009533DA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
