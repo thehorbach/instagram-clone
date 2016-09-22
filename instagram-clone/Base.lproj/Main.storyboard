@@ -139,11 +139,15 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TuJ-a2-tE4" customClass="FancyView" customModule="instagram_clone" customModuleProvider="target">
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="OpP-yg-N9g">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sign-out" translatesAutoresizingMaskIntoConstraints="NO" id="OpP-yg-N9g">
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="36" id="BoZ-ml-qLv"/>
                                             <constraint firstAttribute="height" constant="36" id="SIj-fq-gHd"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="30V-dH-3fK" appends="YES" id="MbA-9f-PfV"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XlL-hL-9cm">
                                         <fontDescription key="fontDescription" type="system" pointSize="26"/>
@@ -313,6 +317,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Rn-Xv-qAY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="30V-dH-3fK">
+                    <connections>
+                        <action selector="signoutButtonDidTouch:" destination="qtK-oG-UYQ" id="QxX-nK-7GY"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="864.79999999999995" y="36.431784107946029"/>
         </scene>
