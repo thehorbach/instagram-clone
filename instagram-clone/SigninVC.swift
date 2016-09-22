@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import SwiftKeychainWrapper
 
 class SigninVC: UIViewController {
     
@@ -18,7 +19,13 @@ class SigninVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        if let _ = KeychainWrapper.stringForKey(KEY_UID) {
+            self.performSegue(withIdentifier: "goToFeed", sender: self)
+        }
     }
     
     @IBAction func emailButtonDidTouch (_ sender: AnyObject) {
@@ -26,19 +33,33 @@ class SigninVC: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: email, password: password, completion: { (user, err) in
                 if err == nil {
                     print("✅ SLAVIK: success with Firebase auth")
+                    if let user = user {
+                        self.completeLogin(id: user.uid)
+                    }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, err) in
                         if err != nil {
                             print("🚨 SLAVIK: \(err.debugDescription)")
                         } else {
                             print("✅ SLAVIK: success with Facebook auth")
+                            
+                            if let user = user {
+                                self.completeLogin(id: user.uid)
+                            }
                         }
                     })
                 }
             })
         }
     }
-
+    
+    
+    func completeLogin(id: String) {
+        let keychain = KeychainWrapper.defaultKeychainWrapper().setString(id, forKey: KEY_UID)
+        print(keychain)
+        performSegue(withIdentifier: "goToFeed", sender: self)
+    }
+    
     @IBAction func facebookButtonDidTouch (_ sender: AnyObject) {
         let facebookLogin = FBSDKLoginManager()
         
@@ -63,8 +84,11 @@ class SigninVC: UIViewController {
                     print("🚨 SLAVIK: \(err.debugDescription)")
                     return
                 }
-                
                 print("✅ SLAVIK: success with Firebase auth")
+                
+                if let user = user {
+                    self.completeLogin(id: user.uid)
+                }
             })
         }
     }

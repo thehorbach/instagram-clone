@@ -9,4 +9,5 @@ target 'instagram-clone' do
 	pod 'Firebase/Storage'
 	pod 'FBSDKCoreKit'
 	pod 'FBSDKLoginKit'
+	pod 'SwiftKeychainWrapper'
 end
