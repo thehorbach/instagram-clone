@@ -22,6 +22,7 @@
 		11BC6C4E1D94071D009533DA /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C4D1D94071D009533DA /* CircleImageView.swift */; };
 		11BC6C501D942D0A009533DA /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C4F1D942D0A009533DA /* PostCell.swift */; };
 		11BC6C531D94449E009533DA /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C521D94449E009533DA /* DataService.swift */; };
+		11BC6C551D9471E9009533DA /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BC6C541D9471E9009533DA /* Post.swift */; };
 		D8168A6F575284DC68DA4423 /* Pods_instagram_clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C72CA51373708842DFA6BF8A /* Pods_instagram_clone.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		11BC6C4D1D94071D009533DA /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		11BC6C4F1D942D0A009533DA /* PostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 		11BC6C521D94449E009533DA /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		11BC6C541D9471E9009533DA /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5EF55031644064D58669EEBC /* Pods-instagram-clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-instagram-clone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-instagram-clone/Pods-instagram-clone.debug.xcconfig"; sourceTree = "<group>"; };
 		C72CA51373708842DFA6BF8A /* Pods_instagram_clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_instagram_clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,6 +98,7 @@
 		11BC6C3C1D92CDE2009533DA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				11BC6C541D9471E9009533DA /* Post.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				11BC6C481D92EEC2009533DA /* FancyField.swift in Sources */,
 				11BC6C4E1D94071D009533DA /* CircleImageView.swift in Sources */,
 				11BC6C2B1D92CA40009533DA /* SigninVC.swift in Sources */,
+				11BC6C551D9471E9009533DA /* Post.swift in Sources */,
 				11BC6C461D92EC88009533DA /* RoundButton.swift in Sources */,
 				11BC6C4A1D92EFFE009533DA /* FancyButton.swift in Sources */,
 				11BC6C531D94449E009533DA /* DataService.swift in Sources */,
