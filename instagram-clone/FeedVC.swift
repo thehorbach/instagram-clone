@@ -21,6 +21,10 @@ class FeedVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        DataService.ds.REF_POST.observe(.value, with: { (snaphot) in
+            print(snaphot.value)
+        })
     }
 
     
