@@ -20,4 +20,8 @@ class PostCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func configureUI(postData: Post) {
+        //self.captionTextView
+    }
 }
