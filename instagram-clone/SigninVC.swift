@@ -34,7 +34,8 @@ class SigninVC: UIViewController {
                 if err == nil {
                     print("✅ SLAVIK: success with Firebase auth")
                     if let user = user {
-                        self.completeLogin(id: user.uid)
+                        let userData = ["provider" : user.providerID]
+                        self.completeLogin(id: user.uid, userData: userData)
                     }
                 } else {
                     FIRAuth.auth()?.createUser(withEmail: email, password: password, completion: { (user, err) in
@@ -44,7 +45,8 @@ class SigninVC: UIViewController {
                             print("✅ SLAVIK: success with Facebook auth")
                             
                             if let user = user {
-                                self.completeLogin(id: user.uid)
+                                let userData = ["provider" : user.providerID]
+                                self.completeLogin(id: user.uid, userData: userData)
                             }
                         }
                     })
@@ -54,7 +56,8 @@ class SigninVC: UIViewController {
     }
     
     
-    func completeLogin(id: String) {
+    func completeLogin(id: String, userData: Dictionary<String, String>) {
+        DataService.ds.createFirebaseUser(uid: id, userData: userData)
         let keychain = KeychainWrapper.defaultKeychainWrapper().setString(id, forKey: KEY_UID)
         print(keychain)
         performSegue(withIdentifier: "goToFeed", sender: self)
@@ -87,7 +90,8 @@ class SigninVC: UIViewController {
                 print("✅ SLAVIK: success with Firebase auth")
                 
                 if let user = user {
-                    self.completeLogin(id: user.uid)
+                    let userData = ["provider" : credential.provider]
+                    self.completeLogin(id: user.uid, userData: userData)
                 }
             })
         }
