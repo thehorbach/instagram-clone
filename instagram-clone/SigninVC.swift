@@ -89,10 +89,12 @@ class SigninVC: UIViewController {
                 }
                 print("✅ SLAVIK: success with Firebase auth")
                 
-                if let user = user {
-                    let userData = ["provider" : credential.provider]
-                    self.completeLogin(id: user.uid, userData: userData)
+                guard let user = user else {
+                    return
                 }
+                
+                let userData = ["provider" : credential.provider]
+                self.completeLogin(id: user.uid, userData: userData)
             })
         }
     }
