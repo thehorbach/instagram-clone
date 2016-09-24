@@ -14,10 +14,12 @@ class FeedVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var selectedImageImageView: UIImageView!
+    @IBOutlet weak var captionTextField: UITextField!
     
     var posts = [Post]()
     var imagePicker: UIImagePickerController!
     static var imageCache: NSCache<NSString, UIImage> = NSCache()
+    var imageSelected = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +65,38 @@ class FeedVC: UIViewController {
         try!  FIRAuth.auth()?.signOut()
         self.dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func postButtonDidTouch (_ sender: AnyObject) {
+        
+        guard let caption = captionTextField.text, caption.characters.count > 0 else {
+            print("the caption field is empty")
+            return
+        }
+        
+        guard let image = selectedImageImageView.image, imageSelected == true else {
+            print("user did not select any image")
+            return
+        }
+        
+        if let imageData = UIImageJPEGRepresentation(image, 0.2) {
+            
+            let imageUniqueID = NSUUID().uuidString
+            let metadata = FIRStorageMetadata()
+            metadata.contentType = "image/jpeg"
+            
+            DataService.ds.STORAGE_POST_IMAGES.child(imageUniqueID).put(imageData, metadata: metadata, completion: { (metadata, err) in
+                
+                guard err == nil else {
+                    print(err.debugDescription)
+                    return
+                }
+                
+                self.imageSelected = false
+                let downloadURL = metadata?.downloadURL()?.absoluteString
+                
+            })
+        }
+    }
 }
 
 extension FeedVC: UITableViewDelegate, UITableViewDataSource {
@@ -103,6 +137,7 @@ extension FeedVC: UIImagePickerControllerDelegate, UINavigationControllerDelegat
         }
         
         self.selectedImageImageView.image = image
+        imageSelected = true
         imagePicker.dismiss(animated: true, completion: nil)
     }
 }
