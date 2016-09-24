@@ -13,8 +13,10 @@ import Firebase
 class FeedVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var selectedImageImageView: UIImageView!
     
     var posts = [Post]()
+    var imagePicker: UIImagePickerController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,10 @@ class FeedVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.allowsEditing = true
         
         DataService.ds.REF_POST.observe(.value, with: { (snapshot: FIRDataSnapshot) in
             
@@ -46,6 +52,9 @@ class FeedVC: UIViewController {
         })
     }
 
+    @IBAction func selectImageButtonDidTouch (_sender: AnyObject) {
+        present(imagePicker, animated: true, completion: nil)
+    }
     
     @IBAction func signoutButtonDidTouch (_ sender: AnyObject) {
         let keychainResults = KeychainWrapper.removeObjectForKey(KEY_UID)
@@ -53,7 +62,6 @@ class FeedVC: UIViewController {
         try!  FIRAuth.auth()?.signOut()
         self.dismiss(animated: true, completion: nil)
     }
-
 }
 
 extension FeedVC: UITableViewDelegate, UITableViewDataSource {
@@ -79,3 +87,17 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+extension FeedVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        guard let image = info[UIImagePickerControllerEditedImage] as? UIImage else {
+            print("Invalid image selected")
+            return
+        }
+        
+        self.selectedImageImageView.image = image
+        imagePicker.dismiss(animated: true, completion: nil)
+    }
+}
+

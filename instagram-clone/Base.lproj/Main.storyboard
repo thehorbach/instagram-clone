@@ -168,12 +168,16 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5vt-Wg-Nqh">
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="ghl-bU-dYe" customClass="CircleImageView" customModule="instagram_clone" customModuleProvider="target">
+                                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-image" translatesAutoresizingMaskIntoConstraints="NO" id="ghl-bU-dYe" customClass="CircleImageView" customModule="instagram_clone" customModuleProvider="target">
                                                 <color key="backgroundColor" red="0.16470588235294117" green="0.46666666666666667" blue="0.74117647058823533" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="49" id="hLq-KE-bcC"/>
                                                     <constraint firstAttribute="height" constant="49" id="jA6-uo-uez"/>
                                                 </constraints>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="g1z-vB-UR0" appends="YES" id="L3n-CQ-CLX"/>
+                                                </connections>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Add a caption" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bF8-OY-6lH" customClass="FancyField" customModule="instagram_clone" customModuleProvider="target">
                                                 <nil key="textColor"/>
@@ -313,6 +317,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="selectedImageImageView" destination="ghl-bU-dYe" id="XBe-0E-JtI"/>
                         <outlet property="tableView" destination="fFT-jG-ScL" id="7Ld-M3-9zg"/>
                     </connections>
                 </viewController>
@@ -320,6 +325,11 @@
                 <tapGestureRecognizer id="30V-dH-3fK">
                     <connections>
                         <action selector="signoutButtonDidTouch:" destination="qtK-oG-UYQ" id="QxX-nK-7GY"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="g1z-vB-UR0">
+                    <connections>
+                        <action selector="selectImageButtonDidTouchWith_sender:" destination="qtK-oG-UYQ" id="dui-Bl-q7G"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
