@@ -71,6 +71,10 @@ extension FeedVC: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell else {
             return UITableViewCell()
         }
+        
+        let item = self.posts[indexPath.row]
+        
+        cell.configureUI(postData: item)
 
         return cell
     }
