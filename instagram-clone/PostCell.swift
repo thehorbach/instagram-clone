@@ -15,6 +15,8 @@ class PostCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var likesLabel: UILabel!
+    
+    var post: Post!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +24,8 @@ class PostCell: UITableViewCell {
     }
     
     func configureUI(postData: Post) {
-        //self.captionTextView
+        self.post = postData
+        self.captionTextView.text = postData.caption
+        self.likesLabel.text = "\(post.likes)"
     }
 }
