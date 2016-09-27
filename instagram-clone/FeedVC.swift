@@ -40,6 +40,8 @@ class FeedVC: UIViewController {
                 return
             }
             
+            self.posts = [] 
+            
             for snap in snapshots {
 
                 guard let postDict = snap.value as? Dictionary<String, AnyObject> else {
@@ -91,11 +93,27 @@ class FeedVC: UIViewController {
                     return
                 }
                 
-                self.imageSelected = false
-                let downloadURL = metadata?.downloadURL()?.absoluteString
                 
+                if let downloadURL = metadata?.downloadURL()?.absoluteString {
+                    self.postToFirebase(imgURL: downloadURL)
+                }
             })
         }
+    }
+    
+    func postToFirebase (imgURL: String) {
+        let post: Dictionary<String, Any> = [
+            "caption" : self.captionTextField.text! as String,
+            "imageURL" : imgURL as String,
+            "likes" : 0 as Int
+        ]
+        
+        let firebasePostReference = DataService.ds.REF_POST.childByAutoId()
+        firebasePostReference.setValue(post)
+        
+        self.imageSelected = false
+        captionTextField.text = ""
+        selectedImageImageView.image = UIImage(named: "add-image")
     }
 }
 
